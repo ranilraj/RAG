@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    /* 🌐 NAVBAR ONLY STYLING */
+    nav {
+      width: 100vw !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #20232a !important; /* dark theme */
+      color: #ffffff !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+      z-index: 1000 !important;
+    }
+
+    nav .brand {
+      font-size: 1.4rem !important;
+      font-weight: bold !important;
+      color: #61dafb !important;
+      text-decoration: none !important;
+    }
+
+    nav ul {
+      list-style: none !important;
+      display: flex !important;
+      gap: 25px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    nav ul li a {
+      color: #ffffff !important;
+      text-decoration: none !important;
+      font-size: 1rem !important;
+      transition: color 0.3s ease !important;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #61dafb !important;
+      font-weight: 600 !important;
+    }
+
+    /* 🧍 Push content below the fixed navbar */
+    .content {
+      margin-top: 70px !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌐 NAVBAR -->
+  <nav>
+    <a href="/" class="brand">AI Portal</a>
+    <ul>
+      <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+      <li><a href="/upload_pdf" class="{% if request.path == '/upload_pdf' %}active{% endif %}">Knowledge Base</a></li>
+      <li><a href="/upload_excel" class="{% if request.path == '/upload_excel' %}active{% endif %}">Responder</a></li>
+    </ul>
+  </nav>
+
+  <!-- 📄 Page Content (below navbar) -->
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>
