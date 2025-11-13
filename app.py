@@ -7,7 +7,7 @@ import io
 app = Flask(__name__)
 
 N8N_WEBHOOK_URL_PDF = "http://localhost:5678/webhook/7c5ac6f8-aeac-40b6-9f73-3d4f0481e91b"
-N8N_WEBHOOK_URL_EXCEL = "https://n8n-3-xfpz.onrender.com/home/workflows/webhook-test/54455645"
+N8N_WEBHOOK_URL_EXCEL = "https://n8n-3-xfpz.onrender.com/webhook/54455645"
 
 
 @app.route('/')
