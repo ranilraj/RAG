@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, render_template, send_file
 import requests
 import pandas as pd
@@ -106,4 +107,5 @@ def render_n8n_response(response, df):
 
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
