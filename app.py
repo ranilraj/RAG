@@ -5,8 +5,8 @@ import io
 
 app = Flask(__name__)
 
-N8N_WEBHOOK_URL = "http://localhost:5678/webhook-test/cd332faf-07f5-4a77-b47e-6650f4f0c045"
-N8N_WEBHOOK_URL_EXCEL = "http://localhost:5678/webhook-test/556b1b71-f44b-470c-9b32-f980a1f23428"
+N8N_WEBHOOK_URL_PDF = "http://localhost:5678/webhook/7c5ac6f8-aeac-40b6-9f73-3d4f0481e91b"
+N8N_WEBHOOK_URL_EXCEL = "https://n8n-3-xfpz.onrender.com/home/workflows/webhook-test/54455645"
 
 
 @app.route('/')
@@ -25,9 +25,10 @@ def upload_pdf():
 
     file = request.files['pdf_file']
     files = {'data': (file.filename, file.stream, 'application/pdf')}
-    response = requests.post(N8N_WEBHOOK_URL, files=files)
+    response = requests.post(N8N_WEBHOOK_URL_PDF, files=files)
 
-    return f"<h3>Sent to n8n:</h3><pre>{response.text}</pre>"
+    # return f"<h3>Sent to n8n:</h3><pre>{response.text}</pre>"
+    return "<h3 style='color:green;'>PDF successfully uploaded!</h3>"
 
 
 @app.route('/upload_excel')
@@ -101,7 +102,7 @@ def render_n8n_response(response, df):
         as_attachment=True,
         download_name='n8n_results.xlsx',
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    )
+    ),"done"
 
 
 if __name__ == '__main__':
